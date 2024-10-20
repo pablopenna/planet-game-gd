@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dph18la4qj220"
+path="res://.godot/imported/SE-0003-N.obj-06dbd829d7a5f2087937a5de27150561.mesh"
+
+[deps]
+
+files=["res://.godot/imported/SE-0003-N.obj-06dbd829d7a5f2087937a5de27150561.mesh"]
+
+source_file="res://models/planets/SE-0003-N.obj"
+dest_files=["res://.godot/imported/SE-0003-N.obj-06dbd829d7a5f2087937a5de27150561.mesh", "res://.godot/imported/SE-0003-N.obj-06dbd829d7a5f2087937a5de27150561.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

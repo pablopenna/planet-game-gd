@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://d1sqvdniw4w6b"
+path="res://.godot/imported/RP-0002-N.obj-1659ad38911c227fd2067eca8dd5f36d.mesh"
+
+[deps]
+
+files=["res://.godot/imported/RP-0002-N.obj-1659ad38911c227fd2067eca8dd5f36d.mesh"]
+
+source_file="res://models/planets/RP-0002-N.obj"
+dest_files=["res://.godot/imported/RP-0002-N.obj-1659ad38911c227fd2067eca8dd5f36d.mesh", "res://.godot/imported/RP-0002-N.obj-1659ad38911c227fd2067eca8dd5f36d.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

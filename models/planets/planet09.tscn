@@ -1,0 +1,13 @@
+[gd_scene load_steps=5 format=3 uid="uid://bhwol3m2g4kjt"]
+
+[ext_resource type="Texture2D" uid="uid://cb7teg8syxb27" path="res://models/planets/SE-0009-N.png" id="1_2t21l"]
+[ext_resource type="ArrayMesh" uid="uid://dp74uq1vvxf8k" path="res://models/planets/SE-0009-N.obj" id="2_f11l6"]
+[ext_resource type="Script" path="res://scenes/planet.gd" id="3_u74gx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xxwtg"]
+albedo_texture = ExtResource("1_2t21l")
+
+[node name="Planet09" type="MeshInstance3D"]
+material_override = SubResource("StandardMaterial3D_xxwtg")
+mesh = ExtResource("2_f11l6")
+script = ExtResource("3_u74gx")
