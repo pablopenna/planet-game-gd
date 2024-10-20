@@ -7,6 +7,7 @@ enum Type {
 
 var path_to_planets_dir = "res://scenes/planets"
 @export var speed = 15
+@export var multiplier = 1.2
 @export var screen_notifier: VisibleOnScreenNotifier3D
 var type: Type
 
@@ -22,7 +23,7 @@ func _ready():
 	created.emit(self)
 
 func _process(delta):
-	position += Vector3.BACK * speed * delta
+	position += Vector3.BACK * speed * delta * GameManager.get_multiplier()
 
 func _load_planet_mesh():
 	var planets_dir = DirAccess.open(path_to_planets_dir)
@@ -34,3 +35,6 @@ func _load_planet_mesh():
 	planets_dir.list_dir_end()
 	
 	add_child(load(path_to_planets_dir + "/" +random_planet).instantiate())
+
+func _get_game_multiplier():
+	GameManager.get_multiplier() * multiplier

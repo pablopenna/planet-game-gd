@@ -1,9 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://dra801nodtpat"]
+[gd_scene load_steps=11 format=3 uid="uid://dra801nodtpat"]
 
 [ext_resource type="PackedScene" uid="uid://fm6a43s55maj" path="res://scenes/player_planet.tscn" id="1_0ohit"]
 [ext_resource type="PackedScene" uid="uid://dw8kdj35vmnrb" path="res://scenes/planet_spawner.tscn" id="2_7g676"]
 [ext_resource type="Texture2D" uid="uid://ds5drtwsqp0d4" path="res://panorama_image.png" id="3_8yj07"]
 [ext_resource type="Script" path="res://scenes/rotate_sky.gd" id="4_43kk4"]
+[ext_resource type="Texture2D" uid="uid://cb7teg8syxb27" path="res://models/planets/SE-0009-N.png" id="6_ff1jo"]
+[ext_resource type="Script" path="res://scenes/progress_bar.gd" id="7_thx1o"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_1subi"]
 panorama = ExtResource("3_8yj07")
@@ -15,9 +17,15 @@ sky_material = SubResource("PanoramaSkyMaterial_1subi")
 background_mode = 2
 sky = SubResource("Sky_vsq4w")
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xv6w4"]
+texture = ExtResource("6_ff1jo")
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
 [node name="Main" type="Node3D"]
 
 [node name="PlayerPlanet" parent="." instance=ExtResource("1_0ohit")]
+speed = 10
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.034657, 4.66736, 11.7129)
@@ -31,3 +39,27 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -60)
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_je0mm")
 script = ExtResource("4_43kk4")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -27.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 1
+theme_override_styles/fill = SubResource("StyleBoxTexture_xv6w4")
+show_percentage = false
+script = ExtResource("7_thx1o")
