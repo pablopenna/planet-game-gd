@@ -1,6 +1,24 @@
-[gd_scene load_steps=2 format=3 uid="uid://cd3frht7mxasc"]
+[gd_scene load_steps=6 format=3 uid="uid://cd3frht7mxasc"]
 
 [ext_resource type="Script" path="res://scenes/base_planet.gd" id="1_gdohs"]
+[ext_resource type="Script" path="res://scenes/base_planet_audio.gd" id="2_dw0ko"]
+[ext_resource type="AudioStream" uid="uid://ce2ftaq34blgp" path="res://sounds/Bass 4.wav" id="3_igft7"]
+[ext_resource type="AudioStream" uid="uid://cwifucb2xs45o" path="res://sounds/CosmicHorror_RumbleLoop1.mp3" id="4_mgnhc"]
 
-[node name="BasePlanet" type="Node3D"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_g0iup"]
+radius = 1.78256
+
+[node name="BasePlanet" type="Area3D" node_paths=PackedStringArray("screen_notifier")]
 script = ExtResource("1_gdohs")
+screen_notifier = NodePath("VisibleOnScreenNotifier3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_g0iup")
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+script = ExtResource("2_dw0ko")
+sounds = Array[AudioStream]([ExtResource("3_igft7"), ExtResource("4_mgnhc")])
+
+[connection signal="created" from="." to="AudioStreamPlayer3D" method="_on_base_planet_created"]

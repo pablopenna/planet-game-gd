@@ -1,7 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://dra801nodtpat"]
+[gd_scene load_steps=8 format=3 uid="uid://dra801nodtpat"]
 
 [ext_resource type="PackedScene" uid="uid://fm6a43s55maj" path="res://scenes/player_planet.tscn" id="1_0ohit"]
 [ext_resource type="PackedScene" uid="uid://dw8kdj35vmnrb" path="res://scenes/planet_spawner.tscn" id="2_7g676"]
+[ext_resource type="Texture2D" uid="uid://ds5drtwsqp0d4" path="res://panorama_image.png" id="3_8yj07"]
+[ext_resource type="Script" path="res://scenes/rotate_sky.gd" id="4_43kk4"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_1subi"]
+panorama = ExtResource("3_8yj07")
+
+[sub_resource type="Sky" id="Sky_vsq4w"]
+sky_material = SubResource("PanoramaSkyMaterial_1subi")
+
+[sub_resource type="Environment" id="Environment_je0mm"]
+background_mode = 2
+sky = SubResource("Sky_vsq4w")
 
 [node name="Main" type="Node3D"]
 
@@ -11,7 +23,11 @@
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.034657, 4.66736, 11.7129)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.00059338, 0, -1, 0, 1, 0, 1, 0, 0.00059338, -14, 0, 0)
+transform = Transform3D(0.999048, 0, 0.0436194, 0, 1, 0, -0.0436194, 0, 0.999048, -14, 0, 0)
 
 [node name="PlanetSpawner" parent="." instance=ExtResource("2_7g676")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -60)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_je0mm")
+script = ExtResource("4_43kk4")
