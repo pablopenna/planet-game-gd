@@ -1,0 +1,21 @@
+[gd_scene load_steps=6 format=3 uid="uid://b6dxv1hgekwul"]
+
+[ext_resource type="Script" path="res://scenes/base_planet.gd" id="1_6owbh"]
+[ext_resource type="Script" path="res://scenes/base_planet_audio.gd" id="2_jsx6u"]
+[ext_resource type="AudioStream" uid="uid://ce2ftaq34blgp" path="res://sounds/Bass 4.wav" id="3_5m08o"]
+[ext_resource type="AudioStream" uid="uid://cwifucb2xs45o" path="res://sounds/CosmicHorror_RumbleLoop1.mp3" id="4_1abwp"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ftxxt"]
+radius = 1.78256
+
+[node name="Planet" type="Area3D"]
+script = ExtResource("1_6owbh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_ftxxt")
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+script = ExtResource("2_jsx6u")
+sounds = Array[AudioStream]([ExtResource("3_5m08o"), ExtResource("4_1abwp")])

@@ -9,6 +9,7 @@ func _ready():
 func _process(delta):
 	_handle_movement(delta)
 	_handle_decay(delta)
+	rotation.x += delta * _get_game_multiplier()
 	
 func _handle_movement(delta):
 	var dir = Vector3.LEFT

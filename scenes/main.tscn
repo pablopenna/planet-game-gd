@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://dra801nodtpat"]
+[gd_scene load_steps=13 format=3 uid="uid://dra801nodtpat"]
 
 [ext_resource type="PackedScene" uid="uid://fm6a43s55maj" path="res://scenes/player_planet.tscn" id="1_0ohit"]
 [ext_resource type="PackedScene" uid="uid://dw8kdj35vmnrb" path="res://scenes/planet_spawner.tscn" id="2_7g676"]
 [ext_resource type="Texture2D" uid="uid://ds5drtwsqp0d4" path="res://panorama_image.png" id="3_8yj07"]
 [ext_resource type="Script" path="res://scenes/rotate_sky.gd" id="4_43kk4"]
+[ext_resource type="PackedScene" uid="uid://c1lxtdgeggnej" path="res://models/planetGenerator/scenes/star.tscn" id="5_fyst8"]
 [ext_resource type="Texture2D" uid="uid://cb7teg8syxb27" path="res://models/planets/SE-0009-N.png" id="6_ff1jo"]
 [ext_resource type="Script" path="res://scenes/progress_bar.gd" id="7_thx1o"]
 
@@ -17,6 +18,12 @@ sky_material = SubResource("PanoramaSkyMaterial_1subi")
 background_mode = 2
 sky = SubResource("Sky_vsq4w")
 
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_o36oy"]
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 4.0
+backlight_enabled = true
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xv6w4"]
 texture = ExtResource("6_ff1jo")
 axis_stretch_horizontal = 1
@@ -25,10 +32,9 @@ axis_stretch_vertical = 1
 [node name="Main" type="Node3D"]
 
 [node name="PlayerPlanet" parent="." instance=ExtResource("1_0ohit")]
-speed = 10
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.034657, 4.66736, 11.7129)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.56743, 4.66738, 11.9653)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.999048, 0, 0.0436194, 0, 1, 0, -0.0436194, 0, 0.999048, -14, 0, 0)
@@ -39,6 +45,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -60)
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_je0mm")
 script = ExtResource("4_43kk4")
+
+[node name="Star" parent="." instance=ExtResource("5_fyst8")]
+transform = Transform3D(-817.548, 0, 575.86, 0, 1000, 0, -575.86, 0, -817.548, -994.705, 0, -244.483)
+surface_material_override/0 = SubResource("ORMMaterial3D_o36oy")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -63,3 +73,5 @@ size_flags_vertical = 1
 theme_override_styles/fill = SubResource("StyleBoxTexture_xv6w4")
 show_percentage = false
 script = ExtResource("7_thx1o")
+
+[editable path="Star"]
